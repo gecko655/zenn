@@ -96,7 +96,7 @@ Bashのバージョン差（しかもマイナーバージョン）の影響を�
 
 能動的にBashのバージョンをアップデートしようとしたわけではなく、CI(GCP cloud build)で使っているBashのバージョンが勝手にアップデートされてしまい、今回の問題が発生しました。
 
-durianのCIでは、↓にある「CloudBuildに初めから存在するDockerImage」を使うことで、ビルド用Docker Imageをpullしないで済むようにしています。
+今回のCIでは、↓にある「CloudBuildに初めから存在するDockerImage」を使うことで、ビルド用Docker Imageをpullしないで済むようにしています。
 - 具体的には `gcr.io/google.com/cloudsdktool/cloud-sdk:cloudbuild_cache` を使っています。
 
 https://qiita.com/Gin/items/7a21f5ed7dee339ea131
