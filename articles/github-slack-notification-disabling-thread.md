@@ -2,7 +2,7 @@
 title: "GitHubのSlack通知がいきなりスレッドに投稿されるようになり不便なので苦情を送ったら、スレッド機能を無効化できるようになった話"
 emoji: "👏"
 type: "tech" # tech: 技術記事 / idea: アイデア
-topics: ["GitHub", "Slack", "GitHub Issue"]
+topics: ["GitHub", "Slack"]
 published: false
 publication_name: "mixi"
 ---
