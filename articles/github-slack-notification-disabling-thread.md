@@ -16,11 +16,11 @@ publication_name: "mixi"
 
 - Create issues as you collaborate (会話の流れでIssueを作成できる)
 
-![](images/github-slack-01.png)
+![](/images/github-slack-01.png)
 
 - Issue card updates and threading (Issue通知のSlack投稿からIssueを更新(=コメント, 編集, クローズ)できる & **Issueコメントがスレッドに流れる**)
 
-![](images/github-slack-02.png)
+![](/images/github-slack-02.png)
 
 https://github.blog/changelog/2022-10-19-github-app-in-slack-issue-create-and-manage-experience/
 https://github.com/integrations/slack#threading
@@ -29,7 +29,7 @@ https://github.com/integrations/slack#threading
 - Issueコメントがチャンネルに流れないので、Issueにアサインされている人以外はIssue上でどのような会話がされているのかわからなくなった。
 - 逆に、Issueにアサインされている人はIssueにコメントが来るたびに通知が飛ぶので、通知がうるさくなった。
 - もともとSlackの"threads"欄は人間との会話に使っていたのに、GitHubの通知で"threads"欄が流されるようになってしまい、人間との会話が追えなくなった。
-  - ![](images/github-slack-03.png)
+  - ![](/images/github-slack-03.png)
 
 - （今回のアップデート直後のみ、）アップデート以前に作られたIssueに対してコメントがあったときは、"Issue Created"のSlack投稿を再度流した上でその投稿のスレッドにコメントされるようになった（とてもうるさい）
 
@@ -38,7 +38,7 @@ https://github.com/integrations/slack#threading
 あまりに耐えられない仕様だったため、GitHub slack連携のGitHub repositoryに、Feature RequestとしてIssueを立てました。
 - 当時、Twitterを見た限りでは日本人しか騒いでおらず、誰かがIssueを書かないと進展しなそうだなと思い、あんまり英語に自信はなかったんですが頑張って英作文しました……
 
-![](images/github-slack-04.png)
+![](/images/github-slack-04.png)
 
 https://github.com/integrations/slack/issues/1500
 
@@ -46,37 +46,37 @@ https://github.com/integrations/slack/issues/1500
 
 その後メンテナーの方から返信があり、最初は「チャンネル上に投稿されるノイズを減らして整理するためにこの変更をしたんだけど、Issueにアサインされていれば引き続きSlackの機能で通知が飛ぶはずだよ〜〜 :wave: :pray: 」[1]のような、さっぱり問題を理解してない感じの反応だったのですが、
 
-[1] ![](images/github-slack-05.png)
+[1] ![](/images/github-slack-05.png)
 
 https://github.com/integrations/slack/issues/1500#issuecomment-1281990344
 
 このコメントに対してリアクションと反論が飛び交った結果、 **「持ち帰って検討する」** [2]、 **「2,3週間のうちにスレッド機能をオフにできるようにする」** [3]との回答が返ってきて、
 
-[2] ![](images/github-slack-06.png)
+[2] ![](/images/github-slack-06.png)
 
 https://github.com/integrations/slack/issues/1500#issuecomment-1282109259
 
-[3] ![](images/github-slack-07.png)
+[3] ![](/images/github-slack-07.png)
 
 https://github.com/integrations/slack/issues/1500#issuecomment-1283966644
 
 さらにこの日程も早まって **「今週末にはスレッド機能をオフにできるようにしたいと思っている」** と、スレッド機能のリリースから数えて1週間半ほどでスレッド機能がオフにできるよう実装される旨が告知されました。
 
-![](images/github-slack-08.png)
+![](/images/github-slack-08.png)
 https://github.com/integrations/slack/issues/1500#issuecomment-1291155069
 
 その後、10/27 23時ごろに、「スレッド機能をオフにする」機能 **ではなく、「Issueコメントは引き続きスレッドに投稿されるが、Issueコメントがチャンネルにも投稿される」機能が追加されました**。
 違う、そうじゃない……
 
-![](images/github-slack-09.png)
+![](/images/github-slack-09.png)
 
 https://github.com/integrations/slack/issues/1500#issuecomment-1293587491
 
 この機能を有効にした時の様子：
 
-![](images/github-slack-10.png)
+![](/images/github-slack-10.png)
 
-![](images/github-slack-11.png)
+![](/images/github-slack-11.png)
 
 ## Issueコメントがチャンネルにも投稿されるようにする
 
@@ -110,14 +110,14 @@ To be continued....
 https://github.com/integrations/slack/issues/1500#issuecomment-1326149981
 
 ちなみに、現時点でこのIssueには400近い :+1: と36人のコメント投稿者が居る。
-![](images/github-slack-12.png)
+![](/images/github-slack-12.png)
 
 ## 追記 2022-12-03 もとのスレッドを使わない機能に戻せるようになった
 
 スレッド機能を完全にオフにし、以前のような挙動でGitHubのSlack通知を投稿できるようになりました！ :tada: :rocket:
 
 `/github settings` コマンドを打つと、↓のような設定画面が表示され、"Disable"をクリックするとスレッド機能がオフになります。
-![](images/github-slack-13.png)
+![](/images/github-slack-13.png)
 
 - 設定はチャンネルごとのため、この設定を行いたいすべてのチャンネルで `/github settings` -> "Disable" をクリックする作業が必要。
 
