@@ -1,5 +1,5 @@
 ---
-title: "GitHubのSlack通知がいきなりthreadに投稿されるようになりめちゃくちゃ不便なので苦情を送ったら、thread機能を無効化できるようになった話"
+title: "GitHubのSlack通知がいきなりスレッドに投稿されるようになり不便なので苦情を送ったら、スレッド機能を無効化できるようになった話"
 emoji: "👏"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["GitHub", "Slack", "GitHub Issue"]
