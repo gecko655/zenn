@@ -46,17 +46,17 @@ https://github.com/integrations/slack/issues/1500
 
 その後メンテナーの方から返信があり、最初は「チャンネル上に投稿されるノイズを減らして整理するためにこの変更をしたんだけど、Issueにアサインされていれば引き続きSlackの機能で通知が飛ぶはずだよ〜〜 :wave: :pray: 」[1]のような、さっぱり問題を理解してない感じの反応だったのですが、
 
-[1]: ![](images/github-slack-05.png)
+[1] ![](images/github-slack-05.png)
 
 https://github.com/integrations/slack/issues/1500#issuecomment-1281990344
 
 このコメントに対してリアクションと反論が飛び交った結果、 **「持ち帰って検討する」** [2]、 **「2,3週間のうちにスレッド機能をオフにできるようにする」** [3]との回答が返ってきて、
 
-[2]: ![](images/github-slack-06.png)
+[2] ![](images/github-slack-06.png)
 
 https://github.com/integrations/slack/issues/1500#issuecomment-1282109259
 
-[3]: ![](images/github-slack-07.png)
+[3] ![](images/github-slack-07.png)
 
 https://github.com/integrations/slack/issues/1500#issuecomment-1283966644
 
