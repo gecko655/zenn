@@ -3,7 +3,7 @@ title: "GitHubのSlack通知がいきなりスレッドに投稿されるよう�
 emoji: "👏"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["GitHub", "Slack"]
-published: false
+published: true
 publication_name: "mixi"
 ---
 
