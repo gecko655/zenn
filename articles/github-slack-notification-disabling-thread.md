@@ -120,5 +120,6 @@ https://github.com/integrations/slack/issues/1500#issuecomment-1326149981
 ![](/images/github-slack-13.png)
 
 - 設定はチャンネルごとのため、この設定を行いたいすべてのチャンネルで `/github settings` -> "Disable" をクリックする作業が必要。
+- **さらに追記(12/9)**: `comments` featureをsubscribeしている場合、 `/github subscribe org/repo comments:'channel'` に変更しておかないと、`/github settings` -> "Disable"の設定に関わらずthreadにGitHubのコメントが通知されるようです。 ~~バグでは…？~~
 
 https://github.com/integrations/slack/issues/1500#issuecomment-1335564029
