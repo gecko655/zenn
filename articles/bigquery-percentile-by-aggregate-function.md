@@ -1,5 +1,5 @@
 ---
-title: "BigQueryで、列の中央値/n%tile値を近似値で出す＆＆正確に出す"
+title: "BigQueryで、列の中央値/n%tile値を近似値で＆正確に出す"
 emoji: "📊"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["BigQuery", "percentile", "パーセンタイル", "median", "中央値"]
