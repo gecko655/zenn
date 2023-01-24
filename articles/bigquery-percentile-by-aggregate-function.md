@@ -291,8 +291,9 @@ FROM UNNEST([
 また、 `PERCENTILE_CONT()` を使うと、平均値( `AVG()` )等の他の集計関数が同時に使えず、平均値と%tile値を同時に1つのクエリ結果に出せないのが地味につらいです。
 
 ## 付録: Redshiftで列の中央値/n%tile値を出す
-Redshiftでは、中央値の算出は [`MEDIAN()`](https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/r_MEDIAN.html) 集計関数が、
-n%tile値の算出は[`PERCENTILE_CONT()`](https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/r_PERCENTILE_CONT.html)集計関数がそれぞれ定義済みなので便利。
+BigQuery では集計関数で中央値/n%tile値を出すのは大変でしたが、 Redshiftでは、中央値の算出は [`MEDIAN()`](https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/r_MEDIAN.html) 集計関数が、
+n%tile値の算出は[`PERCENTILE_CONT()`](https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/r_PERCENTILE_CONT.html)集計関数がそれぞれ定義済みなので便利です。
+BigQueryにも欲しい…
 
 ```sql
 SELECT
