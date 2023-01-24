@@ -9,9 +9,9 @@ publication_name: "mixi"
 
 ## BigQueryで列の中央値/n%tile値を出す
 
-BigQueryには、「列を指定するだけで」中央値を返してくれる集計関数や、「列とパーセンテージを指定するだけで」n%tile値を返してくれる集計関数はありません。
+BigQueryには、「列を指定するだけで」中央値を返してくれる集計関数 `median(col)` や、「列とパーセンテージを指定するだけで」n%tile値を返してくれる集計関数 `percentile(col, percentage)` はありません。
 
-その代わり、n分位近似境界を返す[ `APPROX_QUANTILES()`](https://cloud.google.com/bigquery/docs/reference/standard-sql/functions-and-operators#approx_quantiles)が実装されており、これを使えば、 **インターフェースがぱっと見わかりにくい** ですが近似中央値/n%tile値を一応得ることができます。
+その代わり、n分位近似境界を返す[`APPROX_QUANTILES()`](https://cloud.google.com/bigquery/docs/reference/standard-sql/functions-and-operators#approx_quantiles)が実装されており、これを使えば、 **インターフェースがぱっと見わかりにくい** ですが近似中央値/n%tile値を一応得ることができます。
 
 ```sql
 SELECT
@@ -52,7 +52,10 @@ group by 1
 
 ## BigQueryのUDFを使って、列の中央値/n%tile値を正確に出す
 
-中央値を正確に計算したい場合は、[UDF](https://cloud.google.com/bigquery/docs/reference/standard-sql/user-defined-functions)で集計関数を作って使う方法があります。
+### 正確な中央値
+中央値/n%tileを正確に計算したい場合は、[UDF](https://cloud.google.com/bigquery/docs/reference/standard-sql/user-defined-functions)で集計関数を作って使う方法があります。
+中央値については https://github.com/GoogleCloudPlatform/bigquery-utils/tree/master/udfs/community#medianarr-any-type によって `bqutil.fn.median()` がすでに定義されており、これを真似すれば `median()` 集計関数が作成できます。
+
 
 ```sql
 CREATE OR REPLACE FUNCTION [project_id].[database_name].median(arr ANY TYPE) AS ((
@@ -114,7 +117,6 @@ group by 1
 :::
 
 
-- 上で示した `median()` UDFの実装は https://github.com/GoogleCloudPlatform/bigquery-utils/tree/master/udfs/community#medianarr-any-type にある `bqutil.fn.median()` をパクったものです。
 
 なお、`bqutil.fn.median()` を直接使って
 ```sql
@@ -125,13 +127,14 @@ FROM ~
 group by 1
 ```
 と書けるのではと思う方もいるかもしれませんが、
-BigQueryのUDFはリージョンごとに定義されており、 `bqutil.fn.median()` はUSに定義されているため、 asia-northeast1 にあるデータセットに対してクエリを投げる場合は、自分で asia-northeast1 リージョンにUDFを定義して使う必要があります。
+BigQueryのUDFはリージョンごとに定義されており、 `bqutil.fn.median()` はUSに定義されているため、 asia-northeast1 にあるデータセットに対してクエリを投げる場合は自分で asia-northeast1 リージョンにUDFを定義して使う必要があります。
 
----
+### 正確なn%tile値
 
-同じようにUDFを使うことで正確なn%tile値も出せそうな気がしたので&ネットの海を探しても見つけられなかったので[^1]、自分で書いてみます。
+中央値と同じように、UDFを使うことで正確なn%tile値も出せそうな気がしたので&ネットの海を探しても見つけられなかったので[^1][^2]、n%tileを計算するUDFを自分で書いてみます。
 
-[^1]: 線形補間していない例はいくつか見つかる ( https://qiita.com/dr666m1/items/74a921cf6493169e466c など)
+[^1]:  https://github.com/GoogleCloudPlatform/bigquery-utils/tree/master/udfs/community#medianarr-any-type には、%tileを計算できるUDFの定義は含まれていない。
+[^2]: 線形補間していない例はいくつか見つかる ( https://qiita.com/dr666m1/items/74a921cf6493169e466c など)
 
 ```sql
 CREATE OR REPLACE FUNCTION [project_id].[dataset_name].percentile_agg(arr ANY TYPE, percentile NUMERIC) AS ((
@@ -153,9 +156,6 @@ CREATE OR REPLACE FUNCTION [project_id].[dataset_name].percentile_agg(arr ANY TY
   CROSS JOIN const
 ));
 ```
-
-これで、たしかに正確なn%tileを算出できました。
-- ウィンドウ関数の `PERCENTILE_CONT()` （[後述](#付録%3A-percentile_cont()-関数について)）と違い、この `percentile_agg()` は`GROUP BY` によるデータ集計時に1度だけ処理されるので、計算資源を節約できるはず。
 
 呼び出す際は、正確な小数計算を行うため （丸め誤差が発生しないようにするため）
 ```sql
@@ -222,7 +222,11 @@ FROM UNNEST([
 ])
 group by 1
 ```
+
+これで、たしかに正確なn%tileを算出できました。
+- ウィンドウ関数の `PERCENTILE_CONT()` （[後述](#付録%3A-percentile_cont()-関数について)）と違い、この `percentile_agg()` は`GROUP BY` によるデータ集計時に1度だけ処理されるので、計算資源を節約できるはず。
 :::
+
 
 ## 付録: `PERCENTILE_CONT()` 関数について
 
