@@ -3,7 +3,7 @@ title: "BigQueryで、列の中央値/n%tile値を近似値で出す＆＆正確
 emoji: "📊"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["BigQuery", "percentile", "パーセンタイル", "median", "中央値"]
-published: false
+published: true
 publication_name: "mixi"
 ---
 
