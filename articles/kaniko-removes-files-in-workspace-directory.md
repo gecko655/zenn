@@ -3,7 +3,7 @@ title: "kanikoビルドでは、 `COPY some_file /workspace` すると COPY し�
 emoji: "🦀"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["kaniko", "CloudBuild", "Docker", "GCP", "GoogleCloud"]
-published: false
+published: true
 publication_name: "mixi"
 ---
 
