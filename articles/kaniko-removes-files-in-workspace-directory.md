@@ -1,5 +1,5 @@
 ---
-title: "kanikoビルドでは、 `COPY some_file /workspace` すると COPY したファイルが消える"
+title: "kanikoビルドでは、 `COPY some_file /workspace/` すると COPY したファイルが消える"
 emoji: "🦀"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["kaniko", "CloudBuild", "Docker", "GCP", "GoogleCloud"]
@@ -284,7 +284,7 @@ Uploading tarball of [.] to [gs://[project_id]_cloudbuild/source/1681805778.6552
 
 ## まとめ
 
-Google が用意した方の kaniko ドキュメントを読んでるだけではわからない落とし穴に引っかかり、かつ Google検索してもいまいち解決方法がわからない状態でした。
+GCP の kaniko ドキュメントを読んでるだけではわからない落とし穴に引っかかり、かつ Google 検索してもいまいち解決方法がわからない状態でした。
 - 似たような問題に困っている人は居て、これのおかげで `/workspace` フォルダがなにかおかしいことに気づきました。 https://github.com/GoogleContainerTools/kaniko/issues/1508 
 
 同じ問題が発生して、この記事が Google 検索で引っかかった人々が少しでも救われればいいなと思います……
