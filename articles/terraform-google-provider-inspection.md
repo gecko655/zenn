@@ -404,5 +404,5 @@ GROUP BY 1,2
 
 ## まとめ
 - terraform apply の挙動がおかしいときは、terraform providerとクラウドAPIのどちらが悪いか調査すると良い
-- TF_LOG terraform apply によって、どのようなAPI呼び出しをしているかを確認することができる
+- `TF_LOG=1 terraform apply によって、どのようなAPI呼び出しをしているかを確認することができる
 - Google APIは、 `curl` コマンドの  `-H "Authorization: Bearer $(gcloud auth application-default print-access-token)"` オプションによって簡単に認証を通すことができる。
