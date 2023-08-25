@@ -40,7 +40,7 @@ group by 1
 ![](/images/bigquery-percentile-by-aggregate-function/1.png)
 
 
-- `APPROX_QUANTILES(col, n)` は、 列 `col` の要素を小さい順に `n` 個のバケットに振り分け、 `[最小値, バケット1と2の境界値, バケット1と2の境界値, ..., バケットn-1とnの境界値, 最大値]` の `n+1` の長さの配列を返します。
+- `APPROX_QUANTILES(col, n)` は、 列 `col` の要素を小さい順に `n` 個のバケットに振り分け、 `[最小値, バケット1と2の境界値, バケット2と3の境界値, ..., バケットn-1とnの境界値, 最大値]` の `n+1` の長さの配列を返します。
 - 例: `APPROX_QUANTILES(x, 2)` で [最小値, 中央値, 最大値] のようなARRAYが返ってくるので、 `[OFFSET(1)]` をすることで中央値を得ることができる。
 - 例: `APPROX_QUANTILES(x, 100)` で [最小値, 1%tile, 2%tile,... 99%tile, 最大値] のようなARRAYが返ってくるので、 `[OFFSET(90)]` をすることで90%tileを得ることができる。
 
