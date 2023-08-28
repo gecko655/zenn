@@ -236,7 +236,9 @@ Done. PASS=0 WARN=0 ERROR=1 SKIP=0 TOTAL=1
 
 ## まとめ
 `dbt show` コマンドが4ヶ月前のリリースで追加されていたおかげで、テストに落ちた原因の値が標準出力できるようになりました。
-仮に `dbt show` がなければ、 `dbt test` による品質テストを諦めて他のソリューションを使うこと(例えば[BigQuery Scheduled Query](https://cloud.google.com/bigquery/docs/scheduling-queries)でクエリを定期実行するなど)を考えようかなと思っていたのですが、これで dbt でデータスキーマとデータ品質テストの管理が単一のファイルで管理できるようになったので良かったです。
+仮に `dbt show` がなければ、 `dbt test` による品質テストを諦めて他のソリューションの導入を考えようかなと思っていたのですが、これで dbt でデータスキーマとデータ品質テストの管理が単一のファイルで管理できるようになったので良かったです。
+- 例えば `dbt test` が吐き出した検証用クエリを別で管理して、[BigQuery Scheduled Query](https://cloud.google.com/bigquery/docs/scheduling-queries)でそのクエリを定期実行するなどを検討しかけていました
+
 また、タイトルや説明では BigQuery のビューを対象として説明をしましたが、 dbt が対応している他の 分析 DB でも同様な方法が使えるのではないかと思います。(BigQuery Scheduled Query では他の分析 DB に適用できなかったはず。)
 本当は shell 芸なしでテスト結果のデータを表示する機能が欲しいですが、 dbt の今後に期待したいと思います。
 
