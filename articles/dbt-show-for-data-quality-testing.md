@@ -4,6 +4,7 @@ emoji: "🪣"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["dbt", "DataQuality", "データ品質", "BigQuery", "データエンジニアリング"]
 published: true
+publication_name: "mixi"
 ---
 
 ## この記事について3行くらいで
