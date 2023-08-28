@@ -15,7 +15,7 @@ publication_name: "mixi"
 
 ## dbt test について
 
-以下のようなdbt テーブル定義があるときのことを考えます。(先程のテーブル定義と同様です)
+以下のようなdbt テーブル定義があるときのことを考えます。
 
 ```yml
 # models/mart/example_table.yml
