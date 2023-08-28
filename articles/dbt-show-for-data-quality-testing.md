@@ -121,7 +121,7 @@ having count(*) > 1
 - [dbt show](https://docs.getdbt.com/reference/commands/show) は dbt 1.5.0 の新機能
 - [dbt 1.5.0](https://github.com/dbt-labs/dbt-core/releases/tag/v1.5.0) は2023年4月リリース
 
-`dbt test` は、1つのmodelまたはtestを指定し、以下を行ないます。
+`dbt show` コマンドは、1つのmodelまたはtestを指定し、以下を行ないます。
 - modelを指定したときはそのmodelへのSELECTクエリを、testを指定したときはそのtestのSQLクエリを実行する。
 - ↑で実行したSQLクエリで**得られたデータの先頭数行を標準出力に表示する**
     - デフォルトでは5行
