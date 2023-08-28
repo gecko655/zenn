@@ -117,7 +117,9 @@ having count(*) > 1
 - 前節の例だと、 `col_a` に `1` という値が複数行格納されてますよ！ と言ってほしい。
 - 不正なデータを、[不正なデータ用BigQueryテーブルを作って格納してくれる機能](https://docs.getdbt.com/reference/resource-configs/store_failures)はあるが、BigQueryテーブルをいちいち見に行かないといけないのが面倒。できれば先頭数行を標準出力に出してほしい。
 
-このような「 `dbt test` でテストが落ちたときに不正なデータを標準出力する」機能について、https://github.com/dbt-labs/dbt-core/discussions/8407 で dbt のメンテナの方と議論していたのですが、 `dbt test` コマンドと  `dbt show` コマンドを組み合わせれば問題解決できることに気づきました。
+このような「 `dbt test` でテストが落ちたときに不正なデータを標準出力する」機能について、GitHub上 で dbt のメンテナの方と議論していたのですが、 `dbt test` コマンドと  `dbt show` コマンドを組み合わせれば問題解決できることに気づきました。
+https://github.com/dbt-labs/dbt-core/discussions/8407
+
 - [dbt show](https://docs.getdbt.com/reference/commands/show) は dbt 1.5.0 の新機能
 - [dbt 1.5.0](https://github.com/dbt-labs/dbt-core/releases/tag/v1.5.0) は2023年4月リリース
 
