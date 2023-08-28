@@ -3,7 +3,7 @@ title: "BigQuery等に取り込まれたデータの品質を `dbt test` でチ�
 emoji: "🪣"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["dbt", "DataQuality", "データ品質", "BigQuery", "データエンジニアリング"]
-published: false
+published: true
 ---
 
 ## この記事について3行くらいで
