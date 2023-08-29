@@ -242,8 +242,6 @@ Done. PASS=0 WARN=0 ERROR=1 SKIP=0 TOTAL=1
 また、タイトルや説明では BigQuery のビューを対象として説明をしましたが、 dbt が対応している他の 分析 DB でも同様な方法が使えるのではないかと思います。(BigQuery Scheduled Query では他の分析 DB に適用できなかったはず。)
 本当は shell 芸なしでテスト結果のデータを表示する機能が欲しいですが、 dbt の今後に期待したいと思います。
 
-めでたしめでたし。
-
 ## 付録
 - dbt test 全般について https://docs.getdbt.com/docs/build/tests
     - この記事では `not_null` `relationships` 等の "generic test" しか例に出しませんでしたが、 `dbt test` では任意のSQLが使えます( "singular test" )
