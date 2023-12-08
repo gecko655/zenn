@@ -82,7 +82,7 @@ user    0m0.020s
 sys    0m0.782s
 ```
 **managed node + EBS**:
-468MB のファイルの読み込みに0.26秒 -> 約1800MB/s
+468MB のファイルの読み込みに0.27秒 -> 約1700MB/s
 
 ```bash
 # mysql のデータを読み込む時間をshell上で計測する
