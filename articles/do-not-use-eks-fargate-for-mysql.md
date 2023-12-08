@@ -8,6 +8,12 @@ publication_name: "mixi"
 published_at: 2023-12-09 00:00
 ---
 
+## はじめに
+
+この記事はMIXI DEVELOPERS Advent Calendar 2023の、"シリーズ 2" 9日目の記事です。
+
+https://qiita.com/advent-calendar/2023/mixi
+
 ## 3行で
 
 - AWS EKS には、自分で node の管理をする「[普通の managed node](https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/managed-node-groups.html)(以下、managed nodeと呼びます)」と、 1podあたりnodeずつ自動で用意される「[Fargate node](https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/fargate.html)」が存在する。
@@ -40,7 +46,6 @@ Fargate node は managed, self-managed と異なり、 **いくら pod が増え
 - 意図せずインフラ費用が高額になる可能性がある
     - いらなくなった pod を消し忘れて残したままにしても、インフラリソースが枯渇することがないので気づきにくく、インフラ費用を払い続けることになってしまう
 
-
 MIXIの某ゲームプロジェクトでは、ゲームのサーバー実装の開発やデータの設計を各担当者が円滑に行えるようにするために、開発環境用サーバーを各担当者や開発案件ごとに1つずつ立てたり消したりすることがプロジェクトメンバーなら誰でもできるようにしています。
 このバックエンドに EKS Fargate を用いることで、インフラ管理者が EKS インフラの枯渇を気にしなくても勝手にインフラリソースが増減するようにしています。
 
@@ -51,10 +56,12 @@ AWS EKS の managed node では、 [Persistent Volume](https://kubernetes.io/ja/
 
 しかし、 Fargate ではなぜか EBS が使えません。
 > Amazon EBS ボリュームを Fargate Pods にマウントすることはできません。
-> https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/fargate.html
+
+https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/fargate.html
 
 > **注:** Windows ワーカーノードと AWS Fargate は EBS CSI ドライバーをサポートしていません。
-> https://repost.aws/ja/knowledge-center/eks-troubleshoot-ebs-volume-mounts
+
+https://repost.aws/ja/knowledge-center/eks-troubleshoot-ebs-volume-mounts
 
 Fargate で EBS が使えない理由は不明ですが、おそらくEBSはEC2のインスタンスレベルでアタッチすることは出来ても、EC2インスタンス内に仮想化されたFargate nodeにアタッチすることができないっぽいです（特に理由がどこかで説明されているわけではないのでなにもわからない）。
 
@@ -100,11 +107,12 @@ sys    0m0.295s
 - Fargate で Persistent Volume を使う際は EFS 以外の選択肢は存在しない。
 - 以上のことから **MySQL pod で Fargate を使うことは現時点ではおすすめできない**。 managed node + EBS での構築が適切である。
 
-EFS で小さなファイルの読み書き性能が悪くなる点については、 https://docs.aws.amazon.com/ja_jp/efs/latest/ug/performance.html#optimize-open-close の説明が詳しいです。
+EFS で小さなファイルの読み書き性能が悪くなる点については、 以下の記事の説明が詳しいです。
 
 > 小さなファイルの読み取りや書き込みを行う場合、2 回のラウンドトリップが余分に必要になります。
 1 回の往復 (ファイルオープン、ファイルクローズ) には、メガバイトの大容量データの読み取りまたは書き込みと同じくらいの時間がかかる場合があります。
-> https://docs.aws.amazon.com/ja_jp/efs/latest/ug/performance.html#optimize-open-close
+
+https://docs.aws.amazon.com/ja_jp/efs/latest/ug/performance.html#optimize-open-close
 
 したがって、 MySQL 等のデータベース pod （及び 大量のファイルを Persistent Volume に読み書きしなければいけないような pod） を EKS で立てる際には、 Fargate は採用できず managed node + EBS で構築する必要があるようでした。
 
@@ -113,6 +121,8 @@ EFS で小さなファイルの読み書き性能が悪くなる点について�
 
 開発環境の pod 一式をすべて Fargate node に載せることで EKS managed node の管理から完全に解放されると思っていたのですが、残念ながら MySQL pod において性能が全然出ず、やむを得ず MySQL pod のみ EKS managed node での管理をすることになってしまいました。
 MySQL 用 managed node が枯渇してきたら managed node 数を1個増やす等の作業をしなければいけないようです。
+- もちろん、MySQL サーバーのデータを永続化することをやめれば Persistent Volume は必要なくなりますし、開発環境ということもあってデータの重要性はあまり高くないのですが、 kubernetes において pod が予告なく再起動することはたまにあり、そのタイミングでゲームのユーザーデータが全部吹っ飛んでいてはゲームのレベルデザイナーの方々の仕事ができなくなってしまうため、永続化しないということはできませんでした。
+
 
 今後の EKS Fargate の発展に期待したいところです。もし Fargate が EBS に対応したり、何らかの別の方法で開発環境の MySQL pod を完全マネージドなインフラに移行できたら、来年のアドベントカレンダーに書こうかなと思っています。
 
