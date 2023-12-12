@@ -16,7 +16,7 @@ https://qiita.com/advent-calendar/2023/mixi
 
 ## 3行で
 
-- AWS EKS には、自分で node の管理をする「[普通の managed node](https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/managed-node-groups.html)(以下、managed nodeと呼びます)」と、 1podあたりnodeずつ自動で用意される「[Fargate node](https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/fargate.html)」が存在する。
+- AWS EKS には、自分で node の管理をする「[普通の managed node](https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/managed-node-groups.html)(以下、managed nodeと呼びます)」と、 1 pod あたり1 node ずつ自動で用意される「[Fargate node](https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/fargate.html)」が存在する。
 - Fargate node では、Persistent Volume の作成に大きな制限があり、ボリュームの実体に[EFS](https://aws.amazon.com/jp/efs/)しか選ぶことが出来ない。
 - EFSは[EBS](https://aws.amazon.com/jp/ebs/)と比べ、大量の小さいファイルを読み書きするときの性能がかなり悪く、managed node + EBS と比べ Fargate + EFS の MySQL podの **読み書き性能が 1/25 くらいになってしまった**。諦めて managed node + EBS を使うべき。
 
