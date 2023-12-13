@@ -277,7 +277,7 @@ Uploading tarball of [.] to [gs://[project_id]_cloudbuild/source/1681805778.6552
 可能であれば、作成する docker image で `/workspace` フォルダを使わないように変更するのが良いです。
 - e.g.) 必要なファイルをすべて `/app` 等のフォルダに配置するなど
 
-すでに docker image の `/workspace` 配下にファイルを配置することを前提とした運用をしてしまい、 docker image 内のフォルダ名を変えることが難しい場合、[Cloud Buildのリポジトリのマウント位置は変更できないこと](https://cloud.google.com/source-repositories/docs/integrating-with-cloud-build)や、 **`--context` コマンドでローカルディレクトリを指定するとマウントされるのホストマシンの フォルダ PATH と マウントする kaniko container の PATH は一致していないといけない&オプションで変更することもできない(下記引用参照)** ことから、「 ホストマシンの `/workspace` にマウントされたリポジトリを自分で `/my-workspace` などに移動させる」→「   `--context /my-workspace` で kaniko container を起動する」のようにしないとダメそうです。
+すでに docker image の `/workspace` 配下にファイルを配置することを前提とした運用をしてしまい、 docker image 内のフォルダ名を変えることが難しい場合、[Cloud Buildのリポジトリのマウント位置は変更できないこと](https://cloud.google.com/source-repositories/docs/integrating-with-cloud-build)や、 **`--context` コマンドでローカルディレクトリを指定するとマウントされるホストマシンの フォルダ PATH と マウントする kaniko container の PATH は一致していないといけない&オプションで変更することもできない(下記引用参照)** ことから、「 ホストマシンの `/workspace` にマウントされたリポジトリを自分で `/my-workspace` などに移動させる」→「   `--context /my-workspace` で kaniko container を起動する」のようにしないとダメそうです。
 
 > Note about Local Directory: this option refers to a directory within the kaniko container. If you wish to use this option, you will need to mount in your build context into the container as a directory.
 > https://github.com/GoogleContainerTools/kaniko#kaniko-build-contexts
