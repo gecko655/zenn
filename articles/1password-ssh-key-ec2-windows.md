@@ -152,7 +152,7 @@ AWS のキーペアを RSAを AWS コンソールのキーペア作成画面で�
 ## 解決方法
 旧形式秘密鍵を1passwordに登録したあとで旧形式秘密鍵が必要になった場合は以下のように解決する必要があります。
 
-### CLI で 1password から取り出す
+### 旧形式秘密鍵を CLI で 1password から取り出す
 アプリ版やブラウザ版の1password では新形式の秘密鍵しか取り出せませんが、1password CLI では **なぜか** 旧形式の秘密鍵を取り出せます。
 https://developer.1password.com/docs/cli/
 
