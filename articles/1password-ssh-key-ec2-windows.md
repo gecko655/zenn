@@ -114,7 +114,7 @@ W4is6+62Mf/rs50AAAAAAQID
 # 公開鍵と秘密鍵が一致することの確認
 $ diff rsa_key_for_article.pub <(ssh-keygen -y -f rsa_old_format_key_for_article.pem)
 
-$ diff rsa_key_for_article.pub <(ssh-keygen -y -f rsa_new_format_key_for_article.pem)
+$ diff rsa_key_for_article.pub <(ssh-keygen -y -f rsa_new_format_key_for_article.key)
 
 # どちらも差がない
 ```
