@@ -2,7 +2,7 @@
 title: "GitHub Actions は、 default ブランチで実行しておかないとキャッシュが効かないことがある"
 emoji: "🤖"
 type: "tech" # tech: 技術記事 / idea: アイデア
-topics: ["GitHubActions", "GitHub"]
+topics: ["GitHubActions", "GitHub", "cache"]
 published: true
 publication_name: "mixi"
 ---
