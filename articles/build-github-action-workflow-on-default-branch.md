@@ -94,7 +94,7 @@ jobs:
             path/to/go.sum
       - name: run validator
         run:
-          cd path/to && go run main.go ../../data
+          cd path/to && go run main.go ../data
 ```
 
 - 今回のジョブは GitHub Action のイベントペイロードのうち `github.event.pull_request` の部分をジョブ中で使っていなかったので簡単に `push: { branches: [ master ]}` を追加できたが、使っていた場合は push イベントで起動した際にエラー発生するので対策する必要があります。
