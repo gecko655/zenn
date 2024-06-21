@@ -8,7 +8,7 @@ published: true
 
 この記事を執筆している時点で、 github.com では Pull Request の対象 branch の検索窓が表示されない不具合が発生しています。
 
-![](/images/github-show-search-branch-input-in-pr/2.png)
+![](/images/github-show-search-branch-input-in-pr/1.png)
 
 https://twitter.com/search?q=github%20%E3%83%96%E3%83%A9%E3%83%B3%E3%83%81&src=typed_query&f=live
 
@@ -19,5 +19,5 @@ $("#base-ref-selector .SelectMenu-modal input-demux").prepend($("#base-ref-selec
 $("#head-ref-selector .SelectMenu-modal input-demux").prepend($("#head-ref-selector .SelectMenu-filter"));
 ```
 
-![](/images/github-show-search-branch-input-in-pr/1.png)
+![](/images/github-show-search-branch-input-in-pr/2.png)
 
