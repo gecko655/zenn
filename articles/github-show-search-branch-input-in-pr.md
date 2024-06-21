@@ -10,6 +10,8 @@ published: true
 
 ![](/images/github-show-search-branch-input-in-pr/2.png)
 
+https://twitter.com/search?q=github%20%E3%83%96%E3%83%A9%E3%83%B3%E3%83%81&src=typed_query&f=live
+
 とりいそぎ、 ↓のスクリプトをブラウザのコンソール上に打ち込むと、検索窓が復活します。
 
 ```js
