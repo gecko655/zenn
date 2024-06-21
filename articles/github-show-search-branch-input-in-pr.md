@@ -1,5 +1,5 @@
 ---
-title: "2024-06-21 GitHub のPull Request 作成画面で branch の検索窓が表示されなくなった問題の、一時回避策"
+title: "2024-06-21 GitHub の Pull Request 作成画面で branch の検索窓が表示されなくなった問題の、一時回避策"
 emoji: "📝"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["github"]
