@@ -21,3 +21,7 @@ $("#head-ref-selector .SelectMenu-modal input-demux").prepend($("#head-ref-selec
 
 ![](/images/github-show-search-branch-input-in-pr/2.png)
 
+
+## 追記 2024-06-22
+
+もう直ったらしい。
