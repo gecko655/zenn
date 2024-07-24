@@ -2,7 +2,7 @@
 title: "Identity Aware Proxy で保護された Web アプリで、Scheduler からアクセスする＆アクセスユーザーの認証をする"
 emoji: "🌐"
 type: "tech" # tech: 技術記事 / idea: アイデア
-topics: ["CloudScheduler", "IdentityAwareProxy", "IAP", "OIDC", "GoogleCloud"]
+topics: ["CloudScheduler", "IdToken", "IAP", "OIDC", "GoogleCloud"]
 published: true
 publication_name: "mixi"
 ---
