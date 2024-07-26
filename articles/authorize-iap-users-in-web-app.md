@@ -7,6 +7,10 @@ published: true
 publication_name: "mixi"
 ---
 
+## 注意
+
+[2024-07-26 に、この記事の内容が覆る追記をしました](#追記-2024-07-26)。
+
 ## モチベーション
 社内で利用するツールを実装＆Google Cloud にデプロイするため、以下のような Cloud Run + Cloud Load Balancing + Identity Aware Proxy の構成を考えます。
 
@@ -171,3 +175,34 @@ func DoSomethingWithRestrictingHumanAccess(c echo.Context) error {
     - https://cloud.google.com/load-balancing/docs/https/traffic-management-global#routing_requests_to_backends
     - https://cloud.google.com/compute/docs/reference/rest/v1/urlMaps/insert
 
+
+## 追記 2024-07-26
+
+この記事を公開した後に会社の同僚に指摘されたのですが、
+`roles/iap.httpsResourceAccessor` role を付けている IAM (人間 OR service account) の role condition で
+アクセス可能な path を指定したほうが簡単にアクセス制御が簡単なことがわかりました。
+
+具体的には、 `roles/iap.httpsResourceAccessor` role の条件に `!request.path.startsWith("/automated/")` を指定するだけです。
+- https://cloud.google.com/iam/docs/conditions-overview?hl=ja#example-url-host-path
+
+
+```hcl
+resource "google_iap_web_backend_service_iam_member" "iap_access_member" {
+  for_each            = toset(var.iap_access_members)
+  web_backend_service = google_compute_backend_service.this.name
+  role                = "roles/iap.httpsResourceAccessor"
+  member              = each.key
+
+  condition {
+    expression = "!request.path.startsWith(\"/automated/\")"
+    title      = "deny access to /automated/*"
+  }
+}
+```
+
+- `/automated/hoge` にアクセスすると、 IAP からレスポンスが返ってくる（Webアプリに到達していない）
+![](/images/authorize-iap-users-in-web-app/3.png)
+
+- `/automated/*` 以外の path は今まで通りアクセスできる（スクショ省略）
+
+アクセス可否の制御以外にユーザー認証を使わない場合、 IAP を通過したリクエストを真面目に認証するよりも role condition でアクセス可否を制御するのが簡単そうです。
