@@ -18,7 +18,7 @@ publication_name: "mixi"
 - https://cloud.google.com/iap/docs/enabling-cloud-run の手順で作れる。
 
 この構成の上で、「ユーザーには使わせたくないが、 Cloud Scheduler からはアクセスできるような API `/automated/job` 」を実装する要件が発生しました。
-Identity Aware Proxy(IAP)や Cloud Load Balancing では IAP 認証済みアカウントによってアクセス可否を制御する機能がなさそう([後述](#cloud-load-balancing-で-iap-認証済みアカウントによるアクセス分岐を実装できないの))だったので、 Cloud Run のアプリ内でそのようなアクセス可否を実装する必要がありました。
+Identity Aware Proxy(IAP)や Cloud Load Balancing では IAP 認証済みアカウントによってアクセス可否を制御する機能がなさそう([後述](#cloud-load-balancing-で、-iap-認証済みアカウントによるアクセス分岐を実装できないの？))だったので、 Cloud Run のアプリ内でそのようなアクセス可否を実装する必要がありました。
 
 この記事では、準備として「Cloud Scheduler から IAP 保護された Web アプリ(Cloud Run) にアクセスする方法」を説明し、その後本題の「IAP を通った後にバックエンドサービスに届くリクエストから、リクエストしたユーザー（OR サービスアカウント）を特定する方法」について説明します。
 
