@@ -23,7 +23,7 @@ Identity Aware Proxy(IAP)や Cloud Load Balancing では IAP 認証済みアカ�
 この記事では、準備として「Cloud Scheduler から IAP 保護された Web アプリ(Cloud Run) にアクセスする方法」を説明し、その後本題の「IAP を通った後にバックエンドサービスに届くリクエストから、リクエストしたユーザー（OR サービスアカウント）を特定する方法」について説明します。
 
 ## Cloud Scheduler の設定
-Cloud Scheduler から IAP で保護された Web アプリにアクセスするには、以下のように
+Cloud Scheduler から IAP で保護された Web アプリにアクセスするには、以下のようにします。
 - Cloud Scheduler 用の service account を作成する
     - `roles/iap.httpsResourceAccessor` ロールを付与する
         - 対象のサービスの LB を指定する必要があるので指定する
