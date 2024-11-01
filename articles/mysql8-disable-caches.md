@@ -3,7 +3,7 @@ title: "MySQL 8で、テーブルキャッシュを無効にしてクエリ時�
 emoji: "🫗"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["MySQL", "Database", "MySQL8", "キャッシュ"]
-published: false
+published: true
 publication_name: "mixi"
 ---
 
