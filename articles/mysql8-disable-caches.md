@@ -169,7 +169,7 @@ Aurora は、インスタンス再起動によってテーブルキャッシュ�
 
 - MySQL8 のテーブルキャッシュを消す・一時的に無効化するエレガントな方法は、私の調べた限りでは見つかりませんでした。
 - `innodb_buffer_pool_size` を小さくしてメモリを使わせないようにすることで、無理やりクエリ時間の検証をすることはできました。
-    - （社内で飼っている文書生成AI bot [Chat-M](https://mixi.co.jp/sustainability/materiality_sdgs/) にこの方法を教えてもらいました。いつもありがとう Chat-M... 🤖 ）
+    - （社内で飼っている文章生成AI bot [Chat-M](https://mixi.co.jp/sustainability/materiality_sdgs/) にこの方法を教えてもらいました。いつもありがとう Chat-M... 🤖 ）
 - **もっといい方法を誰か知りませんか？**
     - 色んな方法で "disable MySQL table cache" などで検索してみたものの、前述の "MySQL5.7 以前の Query cache を切る方法" しか見つかりませんでした。
 
