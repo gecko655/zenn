@@ -343,7 +343,12 @@ kind: Ingress
 metadata:
   name: some-ingress
   annotations:
-    alb.ingress.kubernetes.io/auth-idp-cognito: '{"UserPoolArn": "[ここに cognito_user_pull_id を書く]","UserPoolClientId":"[ここに cognito_user_pull_client_id を書く]","UserPoolDomain":"[ここに cognito_user_pool_domain を書く]"}'
+    alb.ingress.kubernetes.io/auth-idp-cognito: |
+      {
+        "UserPoolArn": "[ここに cognito_user_pull_id を書く]",
+        "UserPoolClientId": "[ここに cognito_user_pull_client_id を書く]",
+        "UserPoolDomain": "[ここに cognito_user_pool_domain を書く]"
+      }
 ```
 
 - output に変化があったときの `terraform plan & apply` の出力例：
