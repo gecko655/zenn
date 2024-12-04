@@ -183,7 +183,7 @@ resource "aws_route53_record" "example" {
 
 例えば、2つの ML にそれぞれ同一 role を3つ付与したい場合を考えます。
 
-```
+```tf
 locals {
   analysis_members = [
     "group:some-group1@mixi.co.jp",
