@@ -204,7 +204,7 @@ locals {
   ml_role_pairs = setproduct(local.analysis_members, local.analysis_roles)
 }
 resource "google_project_iam_member" "example" {
-  count(length(ml_role_pairs))
+  count   = length(ml_role_pairs)
   project = var.project_id
   role    = local.ml_role_pairs[0][count.index]
   member  = local.ml_role_pairs[1][count.index]
