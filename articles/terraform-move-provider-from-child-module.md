@@ -14,7 +14,7 @@ publication_name: "mixi"
 [^1]: 検索言語は日本語と英語だけですが…
 
 ## 3行で
-- HCP Terraform で、誤って子モジュールに provider alias の宣言をしていたのをルートボリュームに移動させたところ、 terraform state に反映されなかった
+- HCP Terraform で、誤って子モジュールに provider alias の宣言をしていたのをルートモジュールに移動させたところ、 terraform state に反映されなかった
 - HCP Terraform の "Refresh state" を実行したところ、 terraform state が更新され、ルートモジュールの provider が使われるようになった
 - local backend では再現しなかったので、 HCP Terraform のみの問題らしい
 
