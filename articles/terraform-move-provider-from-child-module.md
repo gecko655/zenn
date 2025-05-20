@@ -55,13 +55,11 @@ Terraform は一般的にルートモジュールと、ルートモジュール�
 project/
 ├── main.tf
 └── modules/
-    └── child/
+    └── [module_name]/
         └── main.tf
 ```
 
 このとき、以下のように子モジュールで provider alias を直接指定するのは推奨されません。
-
-
 
 ```tf
 # project/main.tf
@@ -281,7 +279,7 @@ index 15093c5..2df160f 100644
        "mode": "managed",
        "type": "null_resource",
        "name": "test1",
--      "provider": "module.child.provider[\"registry.terraform.io/hashicorp/null\"].test1",
+-      "provider": "module.provider_test.provider[\"registry.terraform.io/hashicorp/null\"].test1",
 +      "provider": "provider[\"registry.terraform.io/hashicorp/null\"].test1",
        "instances": [
          {
@@ -290,7 +288,7 @@ index 15093c5..2df160f 100644
        "mode": "managed",
        "type": "null_resource",
        "name": "test2",
--      "provider": "module.child.provider[\"registry.terraform.io/hashicorp/null\"].test2",
+-      "provider": "module.provider_test.provider[\"registry.terraform.io/hashicorp/null\"].test2",
 +      "provider": "provider[\"registry.terraform.io/hashicorp/null\"].test2",
        "instances": [
          {
@@ -302,13 +300,13 @@ index 15093c5..2df160f 100644
 ```
 Terraform will perform the following actions:
 
-  # module.child.null_resource.test1 will be destroyed
+  # module.provider_test.null_resource.test1 will be destroyed
   # (because null_resource.test1 is not in configuration)
   - resource "null_resource" "test1" {
       - id = "1000537405425120607" -> null
     }
 
-  # module.child.null_resource.test2 will be destroyed
+  # module.provider_test.null_resource.test2 will be destroyed
   # (because null_resource.test2 is not in configuration)
   - resource "null_resource" "test2" {
       - id = "3560490887494319295" -> null
