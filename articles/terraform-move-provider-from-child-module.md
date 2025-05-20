@@ -14,7 +14,7 @@ publication_name: "mixi"
 [^1]: 検索言語は日本語と英語だけですが…
 
 ## 3行で
-- HCP Terraform で、誤って子モジュールに provider alias の宣言をしていたのをルートモジュールに移動させたところ、 terraform state に反映されなかった
+- [HCP Terraform](https://www.hashicorp.com/ja/products/terraform) で、誤って子モジュールに provider alias の宣言をしていたのをルートモジュールに移動させたところ、 terraform state に反映されなかった
 - HCP Terraform の "Refresh state" を実行したところ、 terraform state が更新され、ルートモジュールの provider が使われるようになった
 - local backend では再現しなかったので、 HCP Terraform のみの問題らしい
 
@@ -150,8 +150,7 @@ resource "null_resource" "test2" {
 ```
 
 ## 発生した問題
-
-上で説明した 「provider alias は子モジュールで宣言するのではなくルートモジュールから与えなければならない」ということを知らずに、子モジュールに provider 設定をそのまま書いてしまっている状態の terraform プロジェクトがありました。
+ある[HCP Terraform](https://www.hashicorp.com/ja/products/terraform) を使っている terraform workspace では、上で説明した 「provider alias は子モジュールで宣言するのではなくルートモジュールから与えなければならない」ということを知らずに、子モジュールに provider 設定をそのまま書いてしまっていました。
 その状態で子モジュールを削除しようとしたところ、前述の「子モジュール内にある resource をどのように消したらいいかがわからない」エラーが発生しました。
 
 ![](/images/terraform-move-provider-from-child-module/1.png)
