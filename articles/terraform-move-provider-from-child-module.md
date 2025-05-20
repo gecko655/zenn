@@ -134,7 +134,7 @@ terraform {
   required_providers {
     null = {
       configuration_aliases = [ null.test1, null.test2 ]
-      # ↑ このモジュールでは外から aws.us-east-1 が渡されないといけないことを宣言する
+      # ↑ このモジュールでは外から null.test1, null.test2 の provider が渡されないといけないことを宣言する
       # https://developer.hashicorp.com/terraform/language/providers/configuration#alias-multiple-provider-configurations
     }
   }
