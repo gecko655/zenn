@@ -22,7 +22,7 @@ Kaniko ( https://github.com/GoogleContainerTools/kaniko ) とは、 Docker image
 Kaniko は Google Cloud Build のドキュメントからも使用例が示されており、この記事の執筆時点（2025年9月2日）では、以下の「ビルドを高速化する際のベスト プラクティス」のページに説明が残っています。
 
 ![](/images/retire-kaniko-and-use-docker-container-driver/1.png)
-https://cloud.google.com/build/docs/optimize-builds/speeding-up-builds?hl=ja [^2][^3]
+*https://cloud.google.com/build/docs/optimize-builds/speeding-up-builds?hl=ja から引用[^2][^3]*
 
 
 [^2]: 魚拓 https://megalodon.jp/2025-0902-1908-38/https://cloud.google.com:443/build/docs/optimize-builds/speeding-up-builds?hl=ja
@@ -55,7 +55,7 @@ substitutions:
 しかし、2025年6月、 Kaniko の GitHub リポジトリがアーカイブされ、これ以上の開発が行われないことが発表されます。
 
 ![](/images/retire-kaniko-and-use-docker-container-driver/2.png)
-（https://github.com/GoogleContainerTools/kaniko の README.md ）
+*https://github.com/GoogleContainerTools/kaniko の README.md*
 
 というわけで、いまのところまだ元気に動いている Kaniko ですが、いつ動かなくなってもおかしくはないので、他の「CI 上でも Docker レイヤーキャッシュが使える」ような新たなビルド方法を探す必要がありました。
 
@@ -72,7 +72,8 @@ build driver は `docker` だけではなく、以下の4種類が存在しま�
 これらのうち、 `docker` 以外の3種はキャッシュをエクスポート・インポートすることが可能で、 `docker build` 時に  `--cache-from` `--cache-to` というオプションを使うことができます。
 
 ![](/images/retire-kaniko-and-use-docker-container-driver/3.png)
-（ https://docs.docker.com/build/builders/drivers/ より引用）
+*https://docs.docker.com/build/builders/drivers/ より引用*
+
 - ドキュメントには `docker` build driver でも一部の cache backend では cache export が使えると書いてあります。
     - > The default docker driver supports the inline, local, registry, and gha cache backends
     - https://docs.docker.com/build/cache/backends/
