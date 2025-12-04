@@ -3,7 +3,8 @@ title: "お金になりにくい SRE 業務をお金にするには"
 emoji: "🧮"
 type: "idea" # tech: 技術記事 / idea: アイデア
 topics: ["SRE", "ポエム"]
-published: false
+published: true
+published_at: 2025-12-05 10:00
 publication_name: mixi
 ---
 
