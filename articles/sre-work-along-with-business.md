@@ -12,6 +12,8 @@ publication_name: mixi
 煽りタイトルですが、 SRE を批判/挑発する意図はありません。
 :::
 
+この記事は、記事は [MIXI DEVELOPERS Advent Calendar 2025](https://qiita.com/advent-calendar/2025/mixi) シリーズ2の 5日目の記事です。
+
 SRE 関連業務の経験年数がそろそろ5年くらいになりそうなので ＆ アドベントカレンダーの季節なので、ほぼ 100% 持論な記事を書いてみます。
 
 ## この記事で書くこと
