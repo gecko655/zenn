@@ -204,7 +204,7 @@ locals {
   ml_role_pairs = setproduct(local.analysis_members, local.analysis_roles)
 }
 resource "google_project_iam_member" "example" {
-  count   = length(ml_role_pairs)
+  count   = length(local.ml_role_pairs)
   project = var.project_id
   role    = local.ml_role_pairs[0][count.index]
   member  = local.ml_role_pairs[1][count.index]
@@ -365,7 +365,7 @@ Changes to Outputs:
 
 https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/google_project_iam
 
-この件はあまりにも有名で、ぼくが理由をここに書くよりも https://blog.g-gen.co.jp/entry/how-to-use-iam-resources-of-terraform などすでにいい記事がウェブ上に多数存在するので、そちらをご覧ください。
+この件はあまりにも有名で、私が理由をここに書くよりも https://blog.g-gen.co.jp/entry/how-to-use-iam-resources-of-terraform などすでにいい記事がウェブ上に多数存在するので、そちらをご覧ください。
 
 ## まとめ
 主観的なものも多分に含まれていたと思いますが、私がよく指摘するコメントをまとめた記事でした。
