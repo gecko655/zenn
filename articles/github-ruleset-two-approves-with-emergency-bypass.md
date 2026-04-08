@@ -58,6 +58,15 @@ https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-
 
 bypass なし ＆ bypass ありの2つの Ruleset を設定することによって、緊急時の 1 approve でのマージを許しつつうっかりミスによる 1 approve でのマージを防ぐことができるようになり、レビューも円滑に進み平和になりました。おしまい。
 
+## 同様の運用の例
+
+- https://medium.com/swissquote-engineering/github-rulesets-because-two-reviewers-are-better-than-a-hotfix-9f03124f1110
+  - 複数 Ruleset と bypass で緊急 merge を両立する例
+- https://tech-1natsu.hatenablog.com/entry/2025/10/18/223535
+  - Renovate 向けに、Ruleset 分離で bypass する例
+- https://zenn.dev/shunsuke_suzuki/scraps/ca7028a7f4fb73
+  - bot のため、approve 用 Ruleset を分離する例
+
 ## スクリーンショット集
 
 今後 Ruleset を設定する方々のため、いろんなスクリーンショットを残しておきます。
