@@ -7,7 +7,7 @@ topics:
   - "サーバー監視"
   - "アラート"
   - "PagerDuty"
-published: false
+published: true
 publication_name: "mixi"
 ---
 
