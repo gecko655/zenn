@@ -3,7 +3,8 @@ title: "Amazon Aurora の Blue Green Deployment はマネージドな切り戻�
 emoji: "🛟"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["AWS", "Aurora", "MySQL", "RDS"]
-published: false
+published: true
+publication_name: "mixi"
 ---
 
 ## はじめに
