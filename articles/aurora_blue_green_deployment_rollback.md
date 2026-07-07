@@ -52,13 +52,18 @@ mysql \
 事前準備ができたら、Aurora MySQL の global cluster `example-global-cluster` に対して、エンジンバージョンとパラメータグループを変更する Blue/Green Deployment リソースを作成します。
 
 ```bash
-aws rds create-blue-green-deployment \
-  --region ap-northeast-1 \
-  --blue-green-deployment-name example-global-cluster-bgd \
-  --source arn:aws:rds::123456789012:global-cluster:example-global-cluster \
-  --target-engine-version 8.4.mysql_aurora.8.4.7 \
-  --target-db-cluster-parameter-group-name example-cluster-pg-84 \
-  --target-db-parameter-group-name example-instance-pg-84
+# create-blue-green-deployment のレスポンスで得られる BlueGreenDeploymentIdentifier
+bgd_id="$(
+  aws rds create-blue-green-deployment \
+    --region ap-northeast-1 \
+    --blue-green-deployment-name example-global-cluster-bgd \
+    --source arn:aws:rds::123456789012:global-cluster:example-global-cluster \
+    --target-engine-version 8.4.mysql_aurora.8.4.7 \
+    --target-db-cluster-parameter-group-name example-cluster-pg-84 \
+    --target-db-parameter-group-name example-instance-pg-84 \
+    --query 'BlueGreenDeployment.BlueGreenDeploymentIdentifier' \
+    --output text
+)"
 ```
 
 リソース作成が完了すると、Blue/Green Deployment 自体の status が `AVAILABLE` になります。
@@ -67,7 +72,7 @@ aws rds create-blue-green-deployment \
 ```bash
 aws rds describe-blue-green-deployments \
   --region ap-northeast-1 \
-  --blue-green-deployment-identifier example-bgd
+  --blue-green-deployment-identifier "${bgd_id}"
 ```
 
 ```json
@@ -94,7 +99,7 @@ aws rds describe-blue-green-deployments \
 ```bash
 aws rds switchover-blue-green-deployment \
   --region ap-northeast-1 \
-  --blue-green-deployment-identifier example-bgd
+  --blue-green-deployment-identifier "${bgd_id}"
 ```
 
 switchover が完了すると、`Status` は `SWITCHOVER_COMPLETED` になります。
@@ -134,7 +139,7 @@ switchover 後、 **green 環境が元の `example-cluster` という名前に�
 ```bash
 aws rds delete-blue-green-deployment \
   --region ap-northeast-1 \
-  --blue-green-deployment-identifier example-bgd
+  --blue-green-deployment-identifier "${bgd_id}"
   
 # 旧 blue 環境はこのとき削除されないので自分で消す
 ```
@@ -197,10 +202,12 @@ https://aws.amazon.com/jp/blogs/database/implement-a-rollback-strategy-after-an-
 
 ```bash
 # Blue Green Deployment リソースの作成手順は省略
+# create-blue-green-deployment のレスポンスで得られる BlueGreenDeploymentIdentifier
+bgd_id="example-bgd"
 
 aws rds switchover-blue-green-deployment \
   --region ap-northeast-1 \
-  --blue-green-deployment-identifier example-bgd
+  --blue-green-deployment-identifier "${bgd_id}"
 ```
 
 完了を確認します。
@@ -208,7 +215,7 @@ aws rds switchover-blue-green-deployment \
 ```bash
 aws rds describe-blue-green-deployments \
   --region ap-northeast-1 \
-  --blue-green-deployment-identifier example-bgd \
+  --blue-green-deployment-identifier "${bgd_id}" \
   --query 'BlueGreenDeployments[0].Status' \
   --output text
 ```
@@ -278,7 +285,7 @@ Blue/Green Deployment を削除します。
 ```bash
 aws rds delete-blue-green-deployment \
   --region ap-northeast-1 \
-  --blue-green-deployment-identifier example-bgd
+  --blue-green-deployment-identifier "${bgd_id}"
 ```
 
 ### 4. 旧 blue クラスターを read_only にする
