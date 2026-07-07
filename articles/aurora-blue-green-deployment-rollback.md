@@ -412,7 +412,7 @@ Position: 789012
 
 ### 8. 旧 blue の replication を停止する
 
-旧 blue が追いついたら replication を止め、外部 source 設定を解除します。
+旧 blue が追いついたら replication を止め、replication 設定自体も削除します。
 
 ```bash
 mysql \
@@ -430,7 +430,7 @@ mysql \
 
 ### 9. 旧 blue を書き込み可能に戻す
 
-rollback 先にする旧 blue の `read_only` を解除します。
+rollback 先にする旧 blue で設定した `read_only` を解除します。
 
 ```bash
 aws rds reset-db-cluster-parameter-group \
@@ -469,7 +469,13 @@ rollback 後、RDS の実リソース名は元の Terraform コードが期待�
 - アプリケーションの DB 接続先設定を IaC 側へ反映する
 - engine version や parameter group の差分を整理する
 
-これは環境ごとにかなり違うため、Blue/Green Deployments の手順書とは別に、IaC の復旧手順として用意しておくべきです。
+この記事では具体的な Terraform の操作は省略します。
+
+
+---
+
+以上の 1〜11 の手順によって、switchover 後に旧 blue 環境へ切り戻すことができます。
+正常系の手順が数回の AWS CLI 実行で済むのに対し、切り戻しはその何倍もの手間がかかることがわかるかと思います。
 
 ## まとめ
 
