@@ -6,6 +6,6 @@
     "new:book": "node ./node_modules/zenn-cli/dist/server/zenn.js new:book"
   },
   "dependencies": {
-    "zenn-cli": "^0.4.7"
+    "zenn-cli": "^0.5.3"
   }
 }
